@@ -5,12 +5,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const schema = yup.object().shape({
-  firstName: yup.string().required("First Name should be required please"),
-  lastName: yup.string().required(),
-  email: yup.string().email().required(),
+  name: yup.string().required("Name should be required please"),
+  mobileNumber: yup.number().positive().integer().required(),
   age: yup.number().positive().integer().required(),
-  password: yup.string().min(4).max(15).required(),
-  confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
+  slot: yup.string().required(),
+  // password: yup.string().min(4).max(15).required(),
+  // confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
 });
 
 function Form() {
@@ -19,8 +19,10 @@ function Form() {
   });
 
   const submitForm = (data) => {
+    console.log('Form');
     console.log(data);
   };
+
   return (
     <div className="Form">
       <div className="title">Yoga Class</div>
@@ -57,7 +59,7 @@ function Form() {
           />
           <p> {errors.slot?.message} </p>
           
-          <input type="submit" id="submit" />
+        <input type="submit" id="submit" />
         </form>
       </div>
     </div>
