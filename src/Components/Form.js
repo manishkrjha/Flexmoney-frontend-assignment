@@ -6,7 +6,7 @@ import * as yup from "yup";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name should be required please"),
-  mobileNumber: yup.number().positive().integer().required(),
+  mobileNumber: yup.string().required(),
   age: yup.number().positive().integer().required(),
   slot: yup.string().required(),
   // password: yup.string().min(4).max(15).required(),
